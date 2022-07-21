@@ -1,7 +1,7 @@
 <h3>Template: Básicos</h3>
 <hr />
 
-<form (submit)="lookAtNgForm(miForm)" #miForm="ngForm" ngForm="myForm">
+<form (submit)="lookAtNgForm(myForm)" #myForm="ngForm" ngForm="myForm">
   <!-- Product -->
   <div class="row mb-3">
     <label class="col-sm-3">Producto:</label>
@@ -12,9 +12,17 @@
         ngModel
         class="form-control"
         required
+        minlength="3"
         placeholder="Nombre producto"
       />
-      <span class="form-text text-danger">Debe tener 3 letras</span>
+      <span
+        class="form-text text-danger"
+        *ngIf="
+          myForm.controls['product']?.invalid &&
+          myForm.controls['product']?.touched
+        "
+        >Debe tener 3 letras</span
+      >
     </div>
   </div>
   <!-- Price -->
@@ -48,6 +56,10 @@
 </form>
 
 <p>Valid</p>
-<pre>{{ miForm.valid }}</pre>
+<pre>{{ myForm.valid }}</pre>
+<p>Pristine</p>
+<pre>{{ myForm.pristine | json }}</pre>
+<p>Touched</p>
+<pre>{{ myForm.touched | json }}</pre>
 <p>Value:</p>
-<pre>{{ miForm.value | json }}</pre>
+<pre>{{ myForm.value | json }}</pre>
