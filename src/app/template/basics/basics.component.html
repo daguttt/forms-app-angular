@@ -1,12 +1,19 @@
 <h3>Template: Básicos</h3>
 <hr />
 
-<form>
+<form (submit)="lookAtNgForm(miForm)" #miForm="ngForm" ngForm="myForm">
   <!-- Product -->
   <div class="row mb-3">
     <label class="col-sm-3">Producto:</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" placeholder="Nombre producto" />
+      <input
+        type="text"
+        name="product"
+        ngModel
+        class="form-control"
+        required
+        placeholder="Nombre producto"
+      />
       <span class="form-text text-danger">Debe tener 3 letras</span>
     </div>
   </div>
@@ -14,15 +21,24 @@
   <div class="row mb-3">
     <label class="col-sm-3">Precio:</label>
     <div class="col-sm-9">
-      <input type="number" class="form-control" placeholder="Precio producto" />
+      <input
+        type="number"
+        name="price"
+        ngModel
+        class="form-control"
+        required
+        placeholder="Precio producto"
+      />
     </div>
   </div>
   <!-- Inventory -->
   <div class="row mb-3">
-    <label class="col-sm-3">Existencias:</label>
+    <label class="col-sm-3">Existencias: (required) </label>
     <div class="col-sm-9">
       <input
         type="number"
+        name="inventory"
+        ngModel
         class="form-control"
         placeholder="Número de existencias"
       />
@@ -30,3 +46,8 @@
   </div>
   <button type="submit" class="btn btn-primary float-end">Guardar</button>
 </form>
+
+<p>Valid</p>
+<pre>{{ miForm.valid }}</pre>
+<p>Value:</p>
+<pre>{{ miForm.value | json }}</pre>
