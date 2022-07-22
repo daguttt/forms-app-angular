@@ -7,24 +7,24 @@ import { NgForm } from '@angular/forms';
   styles: [],
 })
 export class BasicsComponent implements OnInit {
-  @ViewChild('myForm') myForm!: NgForm;
+  @ViewChild('myForm') form!: NgForm;
   constructor() {}
 
   ngOnInit(): void {}
 
   isProductValid(): boolean {
     return (
-      this.myForm?.controls['product']?.invalid &&
-      this.myForm?.controls['product']?.touched
+      this.form?.controls['product']?.invalid &&
+      this.form?.controls['product']?.touched
     );
   }
   isPriceValid(): boolean {
     return (
-      this.myForm?.controls['price']?.value < 0 &&
-      this.myForm?.controls['price']?.touched
+      this.form?.controls['price']?.value < 0 &&
+      this.form?.controls['price']?.touched
     );
   }
   lookAtNgForm() {
-    console.log(this.myForm);
+    console.log(this.form);
   }
 }
