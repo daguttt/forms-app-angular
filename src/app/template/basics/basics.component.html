@@ -1,7 +1,7 @@
 <h3>Template: Básicos</h3>
 <hr />
 
-<form (submit)="lookAtNgForm(myForm)" #myForm="ngForm" ngForm="myForm">
+<form (submit)="lookAtNgForm()" #myForm="ngForm" ngForm="myForm">
   <!-- Product -->
   <div class="row mb-3">
     <label class="col-sm-3">Producto:</label>
@@ -15,12 +15,7 @@
         minlength="3"
         placeholder="Nombre producto"
       />
-      <span
-        class="form-text text-danger"
-        *ngIf="
-          myForm.controls['product']?.invalid &&
-          myForm.controls['product']?.touched
-        "
+      <span class="form-text text-danger" *ngIf="isProductValid()"
         >Debe tener 3 letras</span
       >
     </div>
