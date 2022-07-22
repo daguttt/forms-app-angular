@@ -18,6 +18,12 @@ export class BasicsComponent implements OnInit {
       this.myForm?.controls['product']?.touched
     );
   }
+  isPriceValid(): boolean {
+    return (
+      this.myForm?.controls['price']?.value < 0 &&
+      this.myForm?.controls['price']?.touched
+    );
+  }
   lookAtNgForm() {
     console.log(this.myForm);
   }

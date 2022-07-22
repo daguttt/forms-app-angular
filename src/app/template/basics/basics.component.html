@@ -32,6 +32,9 @@
         required
         placeholder="Precio producto"
       />
+      <span class="form-text text-danger" *ngIf="isPriceValid()"
+        >El precio debe ser 0 o mayor</span
+      >
     </div>
   </div>
   <!-- Inventory -->
@@ -47,10 +50,16 @@
       />
     </div>
   </div>
-  <button type="submit" class="btn btn-primary float-end">Guardar</button>
+  <button
+    type="submit"
+    [disabled]="myForm.invalid"
+    class="btn btn-primary float-end"
+  >
+    Guardar
+  </button>
 </form>
 
-<p>Valid</p>
+<p>Form Valid</p>
 <pre>{{ myForm.valid }}</pre>
 <p>Pristine</p>
 <pre>{{ myForm.pristine | json }}</pre>
