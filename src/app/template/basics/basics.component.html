@@ -1,7 +1,7 @@
 <h3>Template: Básicos</h3>
 <hr />
 
-<form (ngSubmit)="lookAtNgForm()" #myForm="ngForm">
+<form (submit)="onSubmit()" #myForm="ngForm">
   <!-- Product -->
   <div class="row mb-3">
     <label class="col-sm-3">Producto:</label>
@@ -9,7 +9,7 @@
       <input
         type="text"
         name="product"
-        ngModel
+        [ngModel]="initialFormData.product"
         class="form-control"
         required
         minlength="3"
@@ -27,7 +27,7 @@
       <input
         type="number"
         name="price"
-        ngModel
+        [ngModel]="initialFormData.price"
         class="form-control"
         required
         placeholder="Precio producto"
@@ -44,7 +44,7 @@
       <input
         type="number"
         name="inventory"
-        ngModel
+        [ngModel]="initialFormData.inventory"
         class="form-control"
         placeholder="Número de existencias"
       />
