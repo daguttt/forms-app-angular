@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-dynamics',
   templateUrl: './dynamics.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class DynamicsComponent implements OnInit {
+  @ViewChild('form') form!: NgForm;
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  onSubmit() {
+    console.log('Form submitted!', this.form.value);
   }
-
 }

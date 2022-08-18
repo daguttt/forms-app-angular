@@ -1,1 +1,71 @@
-<p>dynamics works!</p>
+<h2>Template: <small>Dinámicos</small></h2>
+<hr />
+<form autocomplete="off" (ngSubmit)="onSubmit()" #form="ngForm">
+  <!-- Name -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label" for="name">Nombre</label>
+    <div class="col-sm-9">
+      <input
+        type="text"
+        class="form-control"
+        required
+        name="name"
+        ngModel
+        placeholder="Nombre"
+      />
+      <span
+        class="form-text text-danger"
+        *ngIf="form.controls['name']?.errors && form.controls['name'].touched"
+        >Este campo es obligatorio</span
+      >
+    </div>
+  </div>
+
+  <!-- Add favorite games-->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Agregar</label>
+    <div class="col-sm-9">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Agregar favorito"
+        />
+        <button type="button" class="btn btn-outline-primary">Agregar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- List of favorite games -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Favoritos</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control mb-1" />
+      <input type="text" class="form-control mb-1" />
+      <input type="text" class="form-control mb-1" />
+      <input type="text" class="form-control mb-1" />
+      <input type="text" class="form-control mb-1" />
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col">
+      <button
+        type="button"
+        class="btn btn-primary float-end"
+        (click)="onSubmit()"
+        [disabled]="form.invalid"
+      >
+        Guardar
+      </button>
+    </div>
+  </div>
+</form>
+<p>Form Valid</p>
+<pre>{{ form.valid }}</pre>
+<p>Pristine</p>
+<pre>{{ form.pristine | json }}</pre>
+<p>Touched</p>
+<pre>{{ form.touched | json }}</pre>
+<p>Value:</p>
+<pre>{{ form.value | json }}</pre>
