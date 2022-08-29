@@ -4,6 +4,13 @@ import { MenuItem } from '../interfaces/sidemenu.interface';
 @Component({
   selector: 'app-sidemenu',
   templateUrl: './sidemenu.component.html',
+  styles: [
+    `
+      li {
+        cursor: pointer;
+      }
+    `,
+  ],
 })
 export class SidemenuComponent {
   public templateMenu: MenuItem[] = [
