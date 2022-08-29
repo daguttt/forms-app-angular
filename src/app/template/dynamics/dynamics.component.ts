@@ -31,9 +31,12 @@ export class DynamicsComponent {
     ],
   };
 
+  newFavoriteGame: string = '';
+
   @ViewChild('form') form!: NgForm;
 
   constructor() {}
+
   removeDynamicInput(inputIndex: number): void {
     // Tutorial's way
     // this.personModel.favorites.splice(inputIndex, 1)
@@ -43,6 +46,15 @@ export class DynamicsComponent {
       (_, index) => index != inputIndex
     );
   }
+
+  addNewFavoriteGame() {
+    this.personModel.favorites.push({
+      id: this.personModel.favorites.length + 1,
+      title: this.newFavoriteGame,
+    });
+    this.newFavoriteGame = '';
+  }
+
   onSubmit() {
     console.log('Form submitted!', this.form.value);
   }
