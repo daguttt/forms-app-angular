@@ -10,7 +10,10 @@
           class="form-check-input"
           type="radio"
           name="gender"
+          [(ngModel)]="personModel.gender"
+          value="F"
           id="radioFemale"
+          required
         />
         <label class="form-check-label" for="radioFemale">Femenino</label>
       </div>
@@ -19,7 +22,10 @@
           class="form-check-input"
           type="radio"
           name="gender"
+          [(ngModel)]="personModel.gender"
+          value="M"
           id="radioMale"
+          required
         />
         <label class="form-check-label" for="radioMale">Másculino</label>
       </div>
@@ -30,10 +36,12 @@
   <div class="row mb-3">
     <label class="col-sm-3 col-form-label">Notificaciones</label>
     <div class="col-sm-9">
-      <div class="form-check form-switch">
+      <div class="form-check form-switch mt-2">
         <input
           class="form-check-input"
           type="checkbox"
+          name="notifications"
+          [(ngModel)]="personModel.notifications"
           id="notificationSwitch"
         />
         <label class="form-check-label" for="notificationSwitch">
@@ -52,6 +60,9 @@
           class="form-check-input"
           type="checkbox"
           id="termsAndConditionsCheckbox"
+          name="termsAndConditions"
+          [(ngModel)]="termsAndConditions"
+          required
         />
         <label class="form-check-label" for="termsAndConditionsCheckbox">
           Acepto términos y condiones de uso
@@ -63,16 +74,21 @@
   <!-- Submit -->
   <div class="row mb-3">
     <div class="col">
-      <button type="button" class="btn btn-primary float-end">Enviar</button>
+      <button
+        type="button"
+        class="btn btn-primary float-end"
+        [disabled]="form.invalid"
+      >
+        Enviar
+      </button>
     </div>
   </div>
 </form>
-<p>Form Valid</p>
-<pre>{{ form.valid }}</pre>
-<p>Pristine</p>
-<pre>{{ form.pristine | json }}</pre>
-<p>Touched</p>
-<pre>{{ form.touched | json }}</pre>
-<p>Form Value:</p>
+<h5>Form Value:</h5>
 <pre>{{ form.value | json }}</pre>
-<p>switches works!</p>
+<h5>Form Valid</h5>
+<pre>{{ form.valid }}</pre>
+<h5>Person</h5>
+<pre>{{ personModel | json }}</pre>
+<h5>Términos y Condiciones</h5>
+<pre>{{ termsAndConditions }}</pre>
