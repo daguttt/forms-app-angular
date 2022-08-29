@@ -24,13 +24,25 @@ export class DynamicsComponent {
         id: 1,
         title: 'FH5',
       },
+      {
+        id: 2,
+        title: 'Halo Infinite',
+      },
     ],
   };
 
   @ViewChild('form') form!: NgForm;
 
   constructor() {}
-
+  removeDynamicInput(inputIndex: number): void {
+    // Tutorial's way
+    // this.personModel.favorites.splice(inputIndex, 1)
+    // -**********************************-
+    // My way
+    this.personModel.favorites = this.personModel.favorites.filter(
+      (_, index) => index != inputIndex
+    );
+  }
   onSubmit() {
     console.log('Form submitted!', this.form.value);
   }

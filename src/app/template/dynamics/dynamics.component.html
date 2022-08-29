@@ -40,14 +40,25 @@
   <div class="row mb-3">
     <label class="col-sm-3 col-form-label">Favoritos</label>
     <div class="col-sm-9">
-      <input
-        type="text"
-        class="form-control mb-1"
+      <div
+        class="input-group mb-1"
         *ngFor="let game of personModel.favorites; let i = index"
-        name="favorite{{ i }}"
-        [(ngModel)]="game.title"
-        required
-      />
+      >
+        <input
+          type="text"
+          class="form-control"
+          name="favorite{{ i }}"
+          [(ngModel)]="game.title"
+          required
+        />
+        <button
+          type="button"
+          class="btn btn-outline-danger"
+          (click)="removeDynamicInput(i)"
+        >
+          Eliminar
+        </button>
+      </div>
     </div>
   </div>
 
@@ -64,11 +75,13 @@
     </div>
   </div>
 </form>
+<p>Person Model</p>
+<pre>{{ personModel | json }}</pre>
 <p>Form Valid</p>
 <pre>{{ form.valid }}</pre>
 <p>Pristine</p>
 <pre>{{ form.pristine | json }}</pre>
 <p>Touched</p>
 <pre>{{ form.touched | json }}</pre>
-<p>Value:</p>
+<p>Form Value:</p>
 <pre>{{ form.value | json }}</pre>
