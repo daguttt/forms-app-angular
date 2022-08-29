@@ -10,7 +10,7 @@
         class="form-control"
         required
         name="name"
-        ngModel
+        [ngModel]="personModel.name"
         placeholder="Nombre"
       />
       <span
@@ -40,11 +40,14 @@
   <div class="row mb-3">
     <label class="col-sm-3 col-form-label">Favoritos</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control mb-1" />
-      <input type="text" class="form-control mb-1" />
-      <input type="text" class="form-control mb-1" />
-      <input type="text" class="form-control mb-1" />
-      <input type="text" class="form-control mb-1" />
+      <input
+        type="text"
+        class="form-control mb-1"
+        *ngFor="let game of personModel.favorites; let i = index"
+        name="favorite{{ i }}"
+        [(ngModel)]="game.title"
+        required
+      />
     </div>
   </div>
 

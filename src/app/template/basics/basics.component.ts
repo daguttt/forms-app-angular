@@ -13,6 +13,9 @@ export class BasicsComponent {
     price: 0,
     inventory: 0,
   };
+
+  // -**********************************-
+  // Validations for error messages
   isProductValid(): boolean {
     return (
       this.form?.controls['product']?.invalid &&
@@ -25,6 +28,8 @@ export class BasicsComponent {
       this.form?.controls['price']?.touched
     );
   }
+  // -**********************************-
+
   onSubmit() {
     this.form.resetForm({
       price: 0,
