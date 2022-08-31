@@ -1,12 +1,19 @@
 <h2>Reactivos: <small>Dinámicos</small></h2>
 <hr />
-<form autocomplete="off">
+<form (ngSubmit)="onSubmit()" autocomplete="off" [formGroup]="personForm">
   <!-- Name -->
   <div class="row mb-3">
     <label class="col-sm-3 col-form-label" for="name">Nombre</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" placeholder="Nombre" />
-      <span class="form-text text-danger">Este campo es obligatorio</span>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Nombre"
+        formControlName="name"
+      />
+      <span class="form-text text-danger" *ngIf="isInputValid('name')"
+        >Este campo es obligatorio</span
+      >
     </div>
   </div>
 
@@ -42,18 +49,19 @@
   <!-- Save button (submit) -->
   <div class="row mb-3">
     <div class="col">
-      <button type="button" class="btn btn-primary float-end">Guardar</button>
+      <button type="submit" class="btn btn-primary float-end">Guardar</button>
     </div>
   </div>
 </form>
 
-<!-- <p>Person Model</p>
-<pre>{{ personModel | json }}</pre>
 <p>Form Valid</p>
-<pre>{{ form.valid }}</pre>
+<pre>{{ personForm.valid }}</pre>
+
 <p>Pristine</p>
-<pre>{{ form.pristine | json }}</pre>
+<pre>{{ personForm.pristine | json }}</pre>
+
 <p>Touched</p>
-<pre>{{ form.touched | json }}</pre>
+<pre>{{ personForm.touched | json }}</pre>
+
 <p>Form Value:</p>
-<pre>{{ form.value | json }}</pre> -->
+<pre>{{ personForm.value | json }}</pre>

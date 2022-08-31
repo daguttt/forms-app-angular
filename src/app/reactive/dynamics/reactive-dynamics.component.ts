@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dynamics',
@@ -6,7 +7,29 @@ import { Component, OnInit } from '@angular/core';
   styles: [],
 })
 export class ReactiveDynamicsComponent implements OnInit {
-  constructor() {}
+  personForm: FormGroup = this.fb.group({
+    name: ['', [Validators.required, Validators.minLength(3)]],
+  });
 
-  ngOnInit(): void {}
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.personForm.reset({
+      name: 'Daniel',
+    });
+  }
+
+  isInputValid(inputName: string) {
+    const input = this.personForm.controls[inputName];
+    return input.errors && input.touched;
+  }
+
+  onSubmit() {
+    if (this.personForm.invalid) {
+      this.personForm.markAllAsTouched();
+      return;
+    }
+    console.log(this.personForm.value);
+    this.personForm.reset();
+  }
 }
