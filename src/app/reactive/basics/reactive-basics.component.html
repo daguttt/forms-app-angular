@@ -12,7 +12,9 @@
         placeholder="Nombre producto"
         formControlName="product"
       />
-      <span class="form-text text-danger">Debe tener 3 letras</span>
+      <span class="form-text text-danger" *ngIf="isInputValid('product')"
+        >Debe tener 3 letras</span
+      >
     </div>
   </div>
   <!-- Price -->
@@ -25,7 +27,9 @@
         placeholder="Precio producto"
         formControlName="price"
       />
-      <span class="form-text text-danger">El precio debe ser 0 o mayor</span>
+      <span class="form-text text-danger" *ngIf="isInputValid('price')">
+        El precio debe ser 0 o mayor
+      </span>
     </div>
   </div>
   <!-- Stock -->
@@ -38,6 +42,9 @@
         placeholder="Número de existencias"
         formControlName="stock"
       />
+      <span class="form-text text-danger" *ngIf="isInputValid('stock')">
+        Las existencias deben ser 0 o mayor
+      </span>
     </div>
   </div>
   <button
@@ -60,3 +67,12 @@
 
 <h5>Value:</h5>
 <pre>{{ myForm.value | json }}</pre>
+
+<h5>Price Errors:</h5>
+<pre>{{ myForm.controls["product"].errors | json }}</pre>
+
+<h5>Price Errors:</h5>
+<pre>{{ myForm.controls["price"].errors | json }}</pre>
+
+<h5>Price Errors:</h5>
+<pre>{{ myForm.controls["stock"].errors | json }}</pre>
