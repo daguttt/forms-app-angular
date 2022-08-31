@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-basics',
@@ -13,9 +13,9 @@ export class ReactiveBasicsComponent {
   //   stock: new FormControl(4),
   // });
   myForm: FormGroup = this.formBuilder.group({
-    product: ['RTX 3090ti'],
-    price: [1500],
-    stock: [4],
+    product: ['RTX 3090ti', [Validators.required, Validators.minLength(3)]],
+    price: [1500, [Validators.required, Validators.min(0)]],
+    stock: [4, [Validators.required, Validators.min(0)]],
   });
   constructor(private formBuilder: FormBuilder) {}
 }

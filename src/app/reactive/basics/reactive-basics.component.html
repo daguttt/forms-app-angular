@@ -40,7 +40,13 @@
       />
     </div>
   </div>
-  <button type="submit" class="btn btn-primary float-end">Guardar</button>
+  <button
+    type="submit"
+    class="btn btn-primary float-end"
+    [disabled]="myForm.invalid"
+  >
+    Guardar
+  </button>
 </form>
 
 <h5>Form Valid</h5>
