@@ -20,7 +20,7 @@
   <!-- Add favorite games-->
   <div class="row mb-3">
     <label class="col-sm-3 col-form-label">Agregar</label>
-    <div class="col-sm-9">
+    <div class="col-sm-9" formArrayName="favorites">
       <div class="input-group">
         <input
           type="text"
@@ -35,14 +35,14 @@
   <!-- List of favorite games -->
   <div class="row mb-3">
     <label class="col-sm-3 col-form-label">Favoritos</label>
-    <div class="col-sm-9">
-      <!-- <div
+    <div class="col-sm-9" formArrayName="favorites">
+      <div
         class="input-group mb-1"
-        *ngFor="let game of personModel.favorites; let i = index"
+        *ngFor="let favorite of favorites.controls; let i = index"
       >
-        <input type="text" class="form-control" />
+        <input type="text" class="form-control" [formControlName]="i" />
         <button type="button" class="btn btn-outline-danger">Eliminar</button>
-      </div> -->
+      </div>
     </div>
   </div>
 
@@ -54,14 +54,14 @@
   </div>
 </form>
 
-<p>Form Valid</p>
+<h5>Form Valid</h5>
 <pre>{{ personForm.valid }}</pre>
 
-<p>Pristine</p>
+<h5>Pristine</h5>
 <pre>{{ personForm.pristine | json }}</pre>
 
-<p>Touched</p>
+<h5>Touched</h5>
 <pre>{{ personForm.touched | json }}</pre>
 
-<p>Form Value:</p>
+<h5>Form Value:</h5>
 <pre>{{ personForm.value | json }}</pre>

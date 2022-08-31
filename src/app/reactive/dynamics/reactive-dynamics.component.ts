@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dynamics',
@@ -8,14 +8,23 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ReactiveDynamicsComponent implements OnInit {
   personForm: FormGroup = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(3)]],
+    name: [''],
+    favorites: this.fb.array(
+      [[''], ['', Validators.required]],
+      Validators.required
+    ),
   });
+
+  get favorites() {
+    return this.personForm.controls['favorites'] as FormArray;
+  }
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.personForm.reset({
       name: 'Daniel',
+      favorites: ['', 'Halo Infinite'],
     });
   }
 
