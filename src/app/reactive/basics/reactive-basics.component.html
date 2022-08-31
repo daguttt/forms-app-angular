@@ -1,7 +1,7 @@
 <h3>Reactivos: Básicos</h3>
 <hr />
 
-<form [formGroup]="myForm" class="mb-5">
+<form (ngSubmit)="onSubmit()" [formGroup]="myForm" class="mb-5">
   <!-- Product -->
   <div class="row mb-3">
     <label class="col-sm-3">Producto:</label>
@@ -47,13 +47,7 @@
       </span>
     </div>
   </div>
-  <button
-    type="submit"
-    class="btn btn-primary float-end"
-    [disabled]="myForm.invalid"
-  >
-    Guardar
-  </button>
+  <button type="submit" class="btn btn-primary float-end">Guardar</button>
 </form>
 
 <h5>Form Valid</h5>
