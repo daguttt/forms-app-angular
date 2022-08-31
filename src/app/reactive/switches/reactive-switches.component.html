@@ -1,1 +1,80 @@
-<p>reactive-switches works!</p>
+<h2>Reactivos: <small>Switches</small></h2>
+<hr />
+<form autocomplete="off">
+  <!-- Radios -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Género</label>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="gender"
+          value="F"
+          id="radioFemale"
+        />
+        <label class="form-check-label" for="radioFemale">Femenino</label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="gender"
+          value="M"
+          id="radioMale"
+        />
+        <label class="form-check-label" for="radioMale">Másculino</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Switches -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Notificaciones</label>
+    <div class="col-sm-9">
+      <div class="form-check form-switch mt-2">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="notificationSwitch"
+        />
+        <label class="form-check-label" for="notificationSwitch">
+          Quiero recibir notificaciones
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkbox -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="termsAndConditionsCheckbox"
+        />
+        <label class="form-check-label" for="termsAndConditionsCheckbox">
+          Acepto términos y condiones de uso
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Submit -->
+  <div class="row mb-3">
+    <div class="col">
+      <button type="button" class="btn btn-primary float-end">Enviar</button>
+    </div>
+  </div>
+</form>
+
+<!-- <h5>Form Value:</h5>
+<pre>{{ form.value | json }}</pre>
+<h5>Form Valid</h5>
+<pre>{{ form.valid }}</pre>
+<h5>Person</h5>
+<pre>{{ personModel | json }}</pre>
+<h5>Términos y Condiciones</h5>
+<pre>{{ termsAndConditions }}</pre> -->

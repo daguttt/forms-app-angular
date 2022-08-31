@@ -1,1 +1,59 @@
-<p>reactive-dynamics works!</p>
+<h2>Reactivos: <small>Dinámicos</small></h2>
+<hr />
+<form autocomplete="off">
+  <!-- Name -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label" for="name">Nombre</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" placeholder="Nombre" />
+      <span class="form-text text-danger">Este campo es obligatorio</span>
+    </div>
+  </div>
+
+  <!-- Add favorite games-->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Agregar</label>
+    <div class="col-sm-9">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Agregar favorito"
+        />
+        <button type="button" class="btn btn-outline-primary">Agregar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- List of favorite games -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Favoritos</label>
+    <div class="col-sm-9">
+      <!-- <div
+        class="input-group mb-1"
+        *ngFor="let game of personModel.favorites; let i = index"
+      >
+        <input type="text" class="form-control" />
+        <button type="button" class="btn btn-outline-danger">Eliminar</button>
+      </div> -->
+    </div>
+  </div>
+
+  <!-- Save button (submit) -->
+  <div class="row mb-3">
+    <div class="col">
+      <button type="button" class="btn btn-primary float-end">Guardar</button>
+    </div>
+  </div>
+</form>
+
+<!-- <p>Person Model</p>
+<pre>{{ personModel | json }}</pre>
+<p>Form Valid</p>
+<pre>{{ form.valid }}</pre>
+<p>Pristine</p>
+<pre>{{ form.pristine | json }}</pre>
+<p>Touched</p>
+<pre>{{ form.touched | json }}</pre>
+<p>Form Value:</p>
+<pre>{{ form.value | json }}</pre> -->
