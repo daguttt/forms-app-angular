@@ -1,12 +1,17 @@
 <h3>Reactivos: Básicos</h3>
 <hr />
 
-<form>
+<form [formGroup]="myForm" class="mb-5">
   <!-- Product -->
   <div class="row mb-3">
     <label class="col-sm-3">Producto:</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" placeholder="Nombre producto" />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Nombre producto"
+        formControlName="product"
+      />
       <span class="form-text text-danger">Debe tener 3 letras</span>
     </div>
   </div>
@@ -32,13 +37,14 @@
   <button type="submit" class="btn btn-primary float-end">Guardar</button>
 </form>
 
-<!-- <p>Form Valid</p>
+<h5>Form Valid</h5>
 <pre>{{ myForm.valid }}</pre>
-<p>Pristine</p>
+
+<h5>Pristine</h5>
 <pre>{{ myForm.pristine | json }}</pre>
-<p>Touched</p>
+
+<h5>Touched</h5>
 <pre>{{ myForm.touched | json }}</pre>
-<p>Value:</p>
+
+<h5>Value:</h5>
 <pre>{{ myForm.value | json }}</pre>
-<p>CustomMin Directive</p> -->
-<!-- <pre>{{ myForm.controls["inventory"]?.errors | json }}</pre> -->

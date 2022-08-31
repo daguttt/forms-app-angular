@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-basics',
   templateUrl: './reactive-basics.component.html',
   styles: [],
 })
-export class ReactiveBasicsComponent implements OnInit {
+export class ReactiveBasicsComponent {
+  myForm: FormGroup = new FormGroup({
+    product: new FormControl('RTX 3090ti'),
+  });
   constructor() {}
-
-  ngOnInit(): void {}
 }
