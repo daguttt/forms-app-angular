@@ -47,7 +47,10 @@
         [ngModel]="initialFormData.inventory"
         class="form-control"
         placeholder="Número de existencias"
+        customMin
+        [minimum]="0"
       />
+      <!-- 👆 ⬆️ Custom Directive -->
     </div>
   </div>
   <button
@@ -67,3 +70,5 @@
 <pre>{{ myForm.touched | json }}</pre>
 <p>Value:</p>
 <pre>{{ myForm.value | json }}</pre>
+<p>CustomMin Directive</p>
+<pre>{{ myForm.controls["inventory"]?.errors | json }}</pre>
