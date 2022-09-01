@@ -1,6 +1,6 @@
 <h2>Reactivos: <small>Dinámicos</small></h2>
 <hr />
-<form (ngSubmit)="onSubmit()" autocomplete="off" [formGroup]="personForm">
+<form autocomplete="off" [formGroup]="personForm">
   <!-- Name -->
   <div class="row mb-3">
     <label class="col-sm-3 col-form-label" for="name">Nombre</label>
@@ -25,9 +25,17 @@
         <input
           type="text"
           class="form-control"
+          [formControl]="newFavoriteControl"
           placeholder="Agregar favorito"
+          (keydown.enter)="addNewFavoriteGame()"
         />
-        <button type="button" class="btn btn-outline-primary">Agregar</button>
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          (click)="addNewFavoriteGame()"
+        >
+          Agregar
+        </button>
       </div>
     </div>
   </div>
@@ -49,10 +57,22 @@
   <!-- Save button (submit) -->
   <div class="row mb-3">
     <div class="col">
-      <button type="submit" class="btn btn-primary float-end">Guardar</button>
+      <button
+        type="button"
+        class="btn btn-primary float-end"
+        (click)="onSubmit()"
+      >
+        Guardar
+      </button>
     </div>
   </div>
 </form>
+
+<h5>Add New Favorite - Valid:</h5>
+<pre>{{ newFavoriteControl.valid | json }}</pre>
+
+<h5>Add New Favorite - Value:</h5>
+<pre>{{ newFavoriteControl.value | json }}</pre>
 
 <h5>Form Valid</h5>
 <pre>{{ personForm.valid }}</pre>

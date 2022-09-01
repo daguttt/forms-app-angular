@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-dynamics',
@@ -10,10 +16,15 @@ export class ReactiveDynamicsComponent implements OnInit {
   personForm: FormGroup = this.fb.group({
     name: [''],
     favorites: this.fb.array(
-      [[''], ['', Validators.required]],
+      [
+        ['', Validators.required],
+        ['', Validators.required],
+      ],
       Validators.required
     ),
   });
+
+  newFavoriteControl: FormControl = this.fb.control('', Validators.required);
 
   get favorites() {
     return this.personForm.controls['favorites'] as FormArray;
@@ -24,7 +35,7 @@ export class ReactiveDynamicsComponent implements OnInit {
   ngOnInit(): void {
     this.personForm.reset({
       name: 'Daniel',
-      favorites: ['', 'Halo Infinite'],
+      favorites: ['FH5', 'Halo Infinite'],
     });
   }
 
@@ -33,7 +44,16 @@ export class ReactiveDynamicsComponent implements OnInit {
     return input.errors && input.touched;
   }
 
+  addNewFavoriteGame() {
+    if (this.newFavoriteControl.invalid) return;
+    this.favorites.push(
+      this.fb.control(this.newFavoriteControl.value, Validators.required)
+    );
+    this.newFavoriteControl.reset();
+  }
+
   onSubmit() {
+    console.log('Submitting');
     if (this.personForm.invalid) {
       this.personForm.markAllAsTouched();
       return;
