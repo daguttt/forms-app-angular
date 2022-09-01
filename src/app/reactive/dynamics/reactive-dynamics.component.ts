@@ -14,7 +14,7 @@ import {
 })
 export class ReactiveDynamicsComponent implements OnInit {
   personForm: FormGroup = this.fb.group({
-    name: [''],
+    name: ['', Validators.required],
     favorites: this.fb.array(
       [
         ['', Validators.required],
@@ -41,7 +41,7 @@ export class ReactiveDynamicsComponent implements OnInit {
 
   isInputValid(inputName: string) {
     const input = this.personForm.controls[inputName];
-    return input.errors && input.touched;
+    return input.invalid && input.touched;
   }
 
   addNewFavoriteGame() {
