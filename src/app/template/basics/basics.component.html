@@ -30,6 +30,7 @@
         [ngModel]="initialFormData.price"
         class="form-control"
         required
+        min="0"
         placeholder="Precio producto"
       />
       <span class="form-text text-danger" *ngIf="isPriceValid()"
@@ -47,6 +48,7 @@
         [ngModel]="initialFormData.inventory"
         class="form-control"
         placeholder="Número de existencias"
+        min="0"
         customMin
         [minimum]="0"
       />

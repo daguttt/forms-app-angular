@@ -26,6 +26,7 @@
         class="form-control"
         placeholder="Precio producto"
         formControlName="price"
+        min="0"
       />
       <span class="form-text text-danger" *ngIf="isInputValid('price')">
         El precio debe ser 0 o mayor
@@ -41,6 +42,7 @@
         class="form-control"
         placeholder="Número de existencias"
         formControlName="stock"
+        min="0"
       />
       <span class="form-text text-danger" *ngIf="isInputValid('stock')">
         Las existencias deben ser 0 o mayor
@@ -62,11 +64,11 @@
 <h5>Value:</h5>
 <pre>{{ myForm.value | json }}</pre>
 
-<h5>Price Errors:</h5>
+<h5>Product Errors:</h5>
 <pre>{{ myForm.controls["product"].errors | json }}</pre>
 
 <h5>Price Errors:</h5>
 <pre>{{ myForm.controls["price"].errors | json }}</pre>
 
-<h5>Price Errors:</h5>
+<h5>Stock Errors:</h5>
 <pre>{{ myForm.controls["stock"].errors | json }}</pre>
