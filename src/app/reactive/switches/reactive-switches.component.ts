@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-switches',
@@ -6,7 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styles: [],
 })
 export class ReactiveSwitchesComponent implements OnInit {
-  constructor() {}
+  form: FormGroup = this.fb.group({
+    gender: ['M', Validators.required],
+    notifications: [false, Validators.required],
+    termsAndConditions: [true, Validators.requiredTrue],
+  });
 
-  ngOnInit(): void {}
+  person = {
+    gender: 'F',
+    notifications: true,
+  };
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.form.reset({
+      ...this.person,
+      termsAndConditions: false,
+    });
+  }
 }

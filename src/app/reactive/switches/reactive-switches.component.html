@@ -1,6 +1,6 @@
 <h2>Reactivos: <small>Switches</small></h2>
 <hr />
-<form autocomplete="off">
+<form autocomplete="off" [formGroup]="form">
   <!-- Radios -->
   <div class="row mb-3">
     <label class="col-sm-3 col-form-label">Género</label>
@@ -9,7 +9,7 @@
         <input
           class="form-check-input"
           type="radio"
-          name="gender"
+          formControlName="gender"
           value="F"
           id="radioFemale"
         />
@@ -19,7 +19,7 @@
         <input
           class="form-check-input"
           type="radio"
-          name="gender"
+          formControlName="gender"
           value="M"
           id="radioMale"
         />
@@ -37,6 +37,7 @@
           class="form-check-input"
           type="checkbox"
           id="notificationSwitch"
+          formControlName="notifications"
         />
         <label class="form-check-label" for="notificationSwitch">
           Quiero recibir notificaciones
@@ -54,6 +55,7 @@
           class="form-check-input"
           type="checkbox"
           id="termsAndConditionsCheckbox"
+          formControlName="termsAndConditions"
         />
         <label class="form-check-label" for="termsAndConditionsCheckbox">
           Acepto términos y condiones de uso
@@ -70,11 +72,14 @@
   </div>
 </form>
 
-<!-- <h5>Form Value:</h5>
+<h5>Form Value:</h5>
 <pre>{{ form.value | json }}</pre>
+
 <h5>Form Valid</h5>
 <pre>{{ form.valid }}</pre>
+
 <h5>Person</h5>
-<pre>{{ personModel | json }}</pre>
+<pre>{{ person | json }}</pre>
+
 <h5>Términos y Condiciones</h5>
-<pre>{{ termsAndConditions }}</pre> -->
+<pre>{{ form.controls["termsAndConditions"].value }}</pre>
