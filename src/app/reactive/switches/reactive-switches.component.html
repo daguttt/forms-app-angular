@@ -67,7 +67,13 @@
   <!-- Submit -->
   <div class="row mb-3">
     <div class="col">
-      <button type="submit" class="btn btn-primary float-end">Enviar</button>
+      <button
+        type="submit"
+        class="btn btn-primary float-end"
+        [disabled]="form.invalid"
+      >
+        Enviar
+      </button>
     </div>
   </div>
 </form>
