@@ -49,7 +49,13 @@
         *ngFor="let favorite of favorites.controls; let i = index"
       >
         <input type="text" class="form-control" [formControlName]="i" />
-        <button type="button" class="btn btn-outline-danger">Eliminar</button>
+        <button
+          type="button"
+          class="btn btn-outline-danger"
+          (click)="removeFavoriteGame(i)"
+        >
+          Eliminar
+        </button>
       </div>
     </div>
   </div>
@@ -73,6 +79,8 @@
 
 <h5>Add New Favorite - Value:</h5>
 <pre>{{ newFavoriteControl.value | json }}</pre>
+
+<hr />
 
 <h5>Form Valid</h5>
 <pre>{{ personForm.valid }}</pre>

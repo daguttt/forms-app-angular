@@ -52,6 +52,11 @@ export class ReactiveDynamicsComponent implements OnInit {
     this.newFavoriteControl.reset();
   }
 
+  removeFavoriteGame(controlIndex: number) {
+    if (this.favorites.length === 1) return;
+    this.favorites.removeAt(controlIndex);
+  }
+
   onSubmit() {
     console.log('Submitting');
     if (this.personForm.invalid) {
