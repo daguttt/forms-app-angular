@@ -43,11 +43,11 @@ export class SidemenuComponent {
   ];
   public authMenu: MenuItem[] = [
     {
-      text: 'Sign up',
+      text: 'Registro',
       route: './auth/signup',
     },
     {
-      text: 'Log in',
+      text: 'Iniciar sesión',
       route: './auth/login',
     },
   ];

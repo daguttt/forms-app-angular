@@ -1,1 +1,89 @@
-<p>signup-page works!</p>
+<h2>Validaciones Reactivas</h2>
+<hr />
+
+<div class="row">
+  <div class="col">
+    <form autocomplete="off">
+      <!-- Name -->
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="name">Nombre</label>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Nombre completo"
+            name="name"
+          />
+          <span class="form-text text-danger">
+            Debe de ser en formato de nombre y apellido
+          </span>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="email">Email</label>
+        <div class="col-sm-9">
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Email"
+            name="email"
+          />
+        </div>
+      </div>
+
+      <!-- Username -->
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="username">Username</label>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            placeholder="Username del usuario"
+            name="username"
+          />
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="password">Contraseña</label>
+        <div class="col-sm-9">
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Contraseña"
+            name="password"
+          />
+        </div>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="confirmPassword"
+          >Confirmar contraseña</label
+        >
+        <div class="col-sm-9">
+          <input
+            type="password"
+            class="form-control"
+            id="confirmPassword"
+            placeholder="Confirmar contraseña"
+            name="confirmPassword"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-primary float-end">Registrarse</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
