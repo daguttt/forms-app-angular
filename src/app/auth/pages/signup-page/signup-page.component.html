@@ -3,19 +3,21 @@
 
 <div class="row">
   <div class="col">
-    <form autocomplete="off">
+    <form (ngSubmit)="onSubmit()" autocomplete="off" [formGroup]="signupForm">
       <!-- Name -->
       <div class="row mb-3">
-        <label class="col-sm-3 col-form-label" for="name">Nombre</label>
+        <label class="col-sm-3 col-form-label" for="fullname"
+          >Nombre completo</label
+        >
         <div class="col-sm-9">
           <input
             type="text"
             class="form-control"
-            id="name"
+            id="fullname"
             placeholder="Nombre completo"
-            name="name"
+            formControlName="fullname"
           />
-          <span class="form-text text-danger">
+          <span class="form-text text-danger" *ngIf="isInputValid('fullname')">
             Debe de ser en formato de nombre y apellido
           </span>
         </div>
@@ -81,9 +83,17 @@
 
       <div class="row">
         <div class="col">
-          <button class="btn btn-primary float-end">Registrarse</button>
+          <button type="submit" class="btn btn-primary float-end">
+            Registrarse
+          </button>
         </div>
       </div>
     </form>
   </div>
 </div>
+
+<h5>Form Valid</h5>
+<pre>{{ signupForm.valid | json }}</pre>
+
+<h5>Full Name Errors</h5>
+<pre>{{ signupForm.controls["fullname"].errors | json }}</pre>
