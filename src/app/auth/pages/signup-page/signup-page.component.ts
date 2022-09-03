@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-signup-page',
@@ -11,6 +16,12 @@ export class SignupPageComponent implements OnInit {
 
   emailPattern: string = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
 
+  cantBeDaguttt(control: FormControl) {
+    const value: string = control.value?.trim().toLowerCase();
+    if (value === 'daguttt') return { daguttt: true };
+    return null;
+  }
+
   signupForm: FormGroup = this.fb.group({
     fullname: [
       '',
@@ -21,6 +32,7 @@ export class SignupPageComponent implements OnInit {
       // * [Validators.required, Validators.email, -> Kind of worse
       [Validators.required, Validators.pattern(this.emailPattern)],
     ],
+    username: ['', [Validators.required, this.cantBeDaguttt]],
   });
 
   constructor(private fb: FormBuilder) {}
@@ -29,6 +41,7 @@ export class SignupPageComponent implements OnInit {
     this.signupForm.reset({
       fullname: 'Daniel Gutiérrez',
       email: 'dagutmu667@gmail.com',
+      username: 'dagutsin',
     });
   }
 
