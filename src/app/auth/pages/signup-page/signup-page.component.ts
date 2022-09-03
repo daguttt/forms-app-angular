@@ -5,37 +5,38 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { ValidatorService } from 'src/app/shared/validators/validator.service';
+import {
+  cantBeDaguttt,
+  emailPattern,
+  fullnamePattern,
+} from 'src/app/shared/validators/validators';
 
 @Component({
   selector: 'app-signup-page',
   templateUrl: './signup-page.component.html',
 })
 export class SignupPageComponent implements OnInit {
-  fullnamePattern: RegExp =
-    /([^0-9\.\,\"\?\!\;\:\#\$\%\&\(\)\*\+\-\/\<\>\=\@\[\]\\\^\_\{\}\|\~]+) ([^0-9\.\,\"\?\!\;\:\#\$\%\&\(\)\*\+\-\/\<\>\=\@\[\]\\\^\_\{\}\|\~]+)/;
-
-  emailPattern: string = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
-
-  cantBeDaguttt(control: FormControl) {
-    const value: string = control.value?.trim().toLowerCase();
-    if (value === 'daguttt') return { daguttt: true };
-    return null;
-  }
-
   signupForm: FormGroup = this.fb.group({
     fullname: [
       '',
-      [Validators.required, Validators.pattern(this.fullnamePattern)],
+      // [Validators.required, Validators.pattern(fullnamePattern)],
+      [Validators.required, Validators.pattern(this.valServ.fullnamePattern)],
     ],
     email: [
       '',
       // * [Validators.required, Validators.email, -> Kind of worse
-      [Validators.required, Validators.pattern(this.emailPattern)],
+      // [Validators.required, Validators.pattern(emailPattern)],
+      [Validators.required, Validators.pattern(this.valServ.emailPattern)],
     ],
-    username: ['', [Validators.required, this.cantBeDaguttt]],
+    username: [
+      '',
+      // [Validators.required, Validators.pattern(cantBeDaguttt)],
+      [Validators.required, this.valServ.cantBeDaguttt],
+    ],
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private valServ: ValidatorService) {}
 
   ngOnInit(): void {
     this.signupForm.reset({
