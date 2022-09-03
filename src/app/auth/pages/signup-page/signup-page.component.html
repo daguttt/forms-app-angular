@@ -32,8 +32,11 @@
             class="form-control"
             id="email"
             placeholder="Email"
-            name="email"
+            formControlName="email"
           />
+          <span class="form-text text-danger" *ngIf="isInputValid('email')">
+            El correo es obligatorio. Debe ser un formato válido
+          </span>
         </div>
       </div>
 
@@ -97,3 +100,6 @@
 
 <h5>Full Name Errors</h5>
 <pre>{{ signupForm.controls["fullname"].errors | json }}</pre>
+
+<h5>Email Errors</h5>
+<pre>{{ signupForm.controls["email"].errors | json }}</pre>
