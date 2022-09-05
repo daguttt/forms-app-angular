@@ -58,6 +58,8 @@ export class SignupPageComponent implements OnInit {
       fullname: 'Daniel Gutiérrez',
       email: 'dagutmu667@gmail.com',
       username: 'dagutsin',
+      password: '123456',
+      confirmPassword: '123456',
     });
   }
 

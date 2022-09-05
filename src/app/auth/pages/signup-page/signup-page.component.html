@@ -98,7 +98,11 @@
 
       <div class="row">
         <div class="col">
-          <button type="submit" class="btn btn-primary float-end">
+          <button
+            type="submit"
+            class="btn btn-primary float-end"
+            [disabled]="signupForm.pending"
+          >
             Registrarse
           </button>
         </div>
@@ -107,8 +111,11 @@
   </div>
 </div>
 
-<h5>Form Valid</h5>
-<pre>{{ signupForm.valid | json }}</pre>
+<h5>Form Valid: {{ signupForm.valid }}</h5>
+
+<h5>Form Status: {{ signupForm.status }}</h5>
+
+<h5>Form Pending: {{ signupForm.pending | json }}</h5>
 
 <h5>Form Errors</h5>
 <pre>{{ signupForm.errors | json }}</pre>
