@@ -66,8 +66,11 @@
             class="form-control"
             id="password"
             placeholder="Contraseña"
-            name="password"
+            formControlName="password"
           />
+          <span class="form-text text-danger" *ngIf="isInputValid('password')">
+            La contraseña debe tener 6 o más caracteres
+          </span>
         </div>
       </div>
 
@@ -82,8 +85,14 @@
             class="form-control"
             id="confirmPassword"
             placeholder="Confirmar contraseña"
-            name="confirmPassword"
+            formControlName="confirmPassword"
           />
+          <span
+            class="form-text text-danger"
+            *ngIf="isInputValid('confirmPassword')"
+          >
+            Las contraseñas deben de ser iguales
+          </span>
         </div>
       </div>
 
@@ -101,6 +110,9 @@
 <h5>Form Valid</h5>
 <pre>{{ signupForm.valid | json }}</pre>
 
+<h5>Form Errors</h5>
+<pre>{{ signupForm.errors | json }}</pre>
+
 <h5>Full Name Errors</h5>
 <pre>{{ signupForm.controls["fullname"].errors | json }}</pre>
 
@@ -109,3 +121,9 @@
 
 <h5>Username Errors</h5>
 <pre>{{ signupForm.controls["username"].errors | json }}</pre>
+
+<h5>Password Errors</h5>
+<pre>{{ signupForm.controls["password"].errors | json }}</pre>
+
+<h5>Confirm Password Errors</h5>
+<pre>{{ signupForm.controls["confirmPassword"].errors | json }}</pre>

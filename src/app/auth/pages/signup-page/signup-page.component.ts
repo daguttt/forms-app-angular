@@ -17,24 +17,33 @@ import {
   templateUrl: './signup-page.component.html',
 })
 export class SignupPageComponent implements OnInit {
-  signupForm: FormGroup = this.fb.group({
-    fullname: [
-      '',
-      // [Validators.required, Validators.pattern(fullnamePattern)],
-      [Validators.required, Validators.pattern(this.valServ.fullnamePattern)],
-    ],
-    email: [
-      '',
-      // * [Validators.required, Validators.email, -> Kind of worse
-      // [Validators.required, Validators.pattern(emailPattern)],
-      [Validators.required, Validators.pattern(this.valServ.emailPattern)],
-    ],
-    username: [
-      '',
-      // [Validators.required, Validators.pattern(cantBeDaguttt)],
-      [Validators.required, this.valServ.cantBeDaguttt],
-    ],
-  });
+  signupForm: FormGroup = this.fb.group(
+    {
+      fullname: [
+        '',
+        // [Validators.required, Validators.pattern(fullnamePattern)],
+        [Validators.required, Validators.pattern(this.valServ.fullnamePattern)],
+      ],
+      email: [
+        '',
+        // * [Validators.required, Validators.email, -> Kind of worse
+        // [Validators.required, Validators.pattern(emailPattern)],
+        [Validators.required, Validators.pattern(this.valServ.emailPattern)],
+      ],
+      username: [
+        '',
+        // [Validators.required, Validators.pattern(cantBeDaguttt)],
+        [Validators.required, this.valServ.cantBeDaguttt],
+      ],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required]],
+    },
+    {
+      validators: [
+        this.valServ.areDifferentInputValues('password', 'confirmPassword'),
+      ],
+    }
+  );
 
   constructor(private fb: FormBuilder, private valServ: ValidatorService) {}
 
