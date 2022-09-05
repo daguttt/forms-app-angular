@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { EmailValidatorService } from 'src/app/shared/validators/email-validator.service';
 import { ValidatorService } from 'src/app/shared/validators/validator.service';
 import {
   cantBeDaguttt,
@@ -29,6 +30,7 @@ export class SignupPageComponent implements OnInit {
         // * [Validators.required, Validators.email, -> Kind of worse
         // [Validators.required, Validators.pattern(emailPattern)],
         [Validators.required, Validators.pattern(this.valServ.emailPattern)],
+        [this.emailValidator],
       ],
       username: [
         '',
@@ -45,7 +47,11 @@ export class SignupPageComponent implements OnInit {
     }
   );
 
-  constructor(private fb: FormBuilder, private valServ: ValidatorService) {}
+  constructor(
+    private fb: FormBuilder,
+    private valServ: ValidatorService,
+    private emailValidator: EmailValidatorService
+  ) {}
 
   ngOnInit(): void {
     this.signupForm.reset({
