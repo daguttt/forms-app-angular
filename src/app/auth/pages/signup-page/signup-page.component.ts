@@ -47,6 +47,20 @@ export class SignupPageComponent implements OnInit {
     }
   );
 
+  errorMessagesMapping: { [key: string]: string } = {
+    required: 'El email es obligatorio',
+    pattern: 'El valor ingresado no está en formato email',
+    emailTaken: 'El email ingresado ya se encuentra registrado',
+  };
+
+  get emailErrorMessage(): string {
+    const detectedErrors = this.signupForm.get('email')?.errors;
+    if (!detectedErrors) return '';
+
+    const [error] = Object.keys(detectedErrors);
+    return this.errorMessagesMapping[error];
+  }
+
   constructor(
     private fb: FormBuilder,
     private valServ: ValidatorService,

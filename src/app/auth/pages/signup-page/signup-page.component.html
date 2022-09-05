@@ -35,7 +35,7 @@
             formControlName="email"
           />
           <span class="form-text text-danger" *ngIf="isInputValid('email')">
-            El correo es obligatorio. Debe ser un formato válido
+            {{ emailErrorMessage }}
           </span>
         </div>
       </div>
